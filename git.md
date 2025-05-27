@@ -9,19 +9,22 @@
 	> adiciona um arquivo especifico(in this case 'archive.txt) a stage area
 * $git commit -m "Title" -m "Message"                               
 	> prepara todos os arquivos da fila para serem enviados
+* $git status
+	> mostra o status do commit
 
 * $git branch -M <new name>                                     
 	> rename the Main/Master branch
 * $git checkout -b <branch name>
 	> Create and switch to a new branch
  
-* $git remote add origin <link.git>                       
+* $git remote add origin <URL.git>                       
 	> cria uma conecção com o repositorio remoto
 * $git push -u origin main                                
 	> envia os arquivos do 'commit' para o repositorio remoto
 * $git pull origin main				       
 	> puxa os arquivos do repositorio remoto para o local
-* $git clone <link.git>                                   
+* $git clone <URL.git>  
+    > e.g git clone <html or ssh .git file> <new name>
 	> clona um diretorio remoto
 * $clear                                                  
 	> limpa o terminal
