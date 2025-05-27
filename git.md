@@ -96,5 +96,11 @@
 	> mostra todas as modificacoes de um commit
 * $git rm -r --cached .                                   
 	> limpa todos os arquivos cached para usar o gitignore
-* $git reset --hard @{u}
-* 	> clear whole unpushed changes (usefull when commiting a not allowed file (above the size limit) and unable to push it)
+	
+* $git reset --soft <commit tag from git log>
+	> remove todos commits postiores ao especificado e deixa os arquinos na stage area 
+* $git reset --mixed <commit tag from git log>
+	> remove todos commits posteriores ao especificado e deixa os arquivos como untracked 
+* $git reset --hard <commit tag from git log>
+	> deleta todos os commits posteriores ao especificado e deleta os arquivos do local e do server
+	> (usefull when commiting a not allowed file (above the size limit) and unable to push it)
