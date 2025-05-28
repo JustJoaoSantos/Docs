@@ -17,17 +17,35 @@
 * $git checkout -b <branch name>
 	> Create and switch to a new branch
  
-* $git remote add origin <URL.git>                       
-	> cria uma conecção com o repositorio remoto
-* $git push -u origin main                                
-	> envia os arquivos do 'commit' para o repositorio remoto
-* $git pull origin main				       
-	> puxa os arquivos do repositorio remoto para o local
+> $git remote add origin <URL.git>                       
+	* cria uma conecção com o repositorio remoto
+> $git push -u origin main                                
+	* envia os arquivos do 'commit' para o repositorio remoto
+> $git pull origin main				       
+	* puxa os arquivos do repositorio remoto para o local e merge com os locais
+	* refere aos comandos git fetch + git merge
 * $git clone <URL.git>  
     > e.g git clone <html or ssh .git file> <new name>
 	> clona um diretorio remoto
 * $clear                                                  
 	> limpa o terminal
+	
+> $git fetch origin main 
+- *traz o commit do remoto(origin) para branch local(main)*
+
+---
+> $git diff main origin/main
+- mostra diferenca entre main(branch) e main(remoto/branch)
+
+## Branches
+> $git checkout -b <branch_name>
+	* cria e muda para a branch especificada
+> $git checkout <branch_name>
+	* muda para branch especificada 
+> $git branch -v 
+	* lista branch e branch commit 
+> $git branch -d <branch_name>
+	* deleta branch
 
 ## Setting Up Remote
 * $git remote set-url                                     
@@ -103,4 +121,7 @@
 	> remove todos commits posteriores ao especificado e deixa os arquivos como untracked 
 * $git reset --hard <commit tag from git log>
 	> deleta todos os commits posteriores ao especificado e deleta os arquivos do local e do server
-	> (usefull when commiting a not allowed file (above the size limit) and unable to push it)
+	
+# DEBUG
+* commit not allowed, file above size limit 
+	> $git reset --hard <commit tag>
