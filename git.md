@@ -29,11 +29,14 @@
 	> clona um diretorio remoto
 * $clear                                                  
 	> limpa o terminal
-	
-> $git fetch origin main 
-- *traz o commit do remoto(origin) para branch local(main)*
 
 ---
+```shell 
+git fetch origin main 
+``` 
+* _NT.: traz o commit do remoto(origin) para branch local(main)_
+---
+
 > $git diff main origin/main
 - mostra diferenca entre main(branch) e main(remoto/branch)
 
