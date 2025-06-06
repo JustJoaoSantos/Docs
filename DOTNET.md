@@ -79,8 +79,8 @@ using System.Threading.Tasks;
 
 namespace ProjectName.FolderName {
 	public class ClassName {
-		public string propertyName {get; set;}
-		public void Method(){}
+		public string Property {get; set;}
+		public void Method(int argument){}
 	}
 }
 ```
@@ -103,7 +103,6 @@ namespace NAMESCAPE.NAME {
 }
 ```
 
-
 ### Sintaxe e Convencoes
 * Nomeclaturas:
 	- Metodos/Funcoes sao escritas Capitalizadas em PascalCame
@@ -118,6 +117,31 @@ namespace NAMESCAPE.NAME {
 	- PascalCase
 	- snake_case
 	- spinal-case
+
+### Comentarios
+* Unica Linha: //Comentary
+* Multipla Linha: /*Comentary*/
+* Documentar  Classes, Metodos, etc.: <summary>
+* e.g summary on class
+```csharp
+///<summary>
+///
+///</summary>
+class ClassName {}
+```
+
+* e.g summary on method:
+```csharp
+///<summary>
+///
+///</summary>
+///<param name="x">comentary about param </param>
+///<returns>commentary about return</returns>
+public int MethodName(int x){
+	Console.WriteLine(x);
+	return x - 1;
+}
+```
 
 ### Propriedades/Variaveis
 * criando uma variavel (Scopo Global)
@@ -380,4 +404,42 @@ public class ClassName {
 ```csharp
 Using NamespaceName;
 ClassName classInstanceName = new ClassName();
+```
+
+* Validacao de Propriedades
+```csharp
+public class Pessoa {
+	private string _nome;
+	
+	public string Nome {
+		get => _nome.ToUpper(); //A maneira resumida e recomendade de retornar uma simples linha
+		
+		set {
+			if (value == "") {
+				throw new ArgumentException("o valor nao pode ser vazil");
+			}
+		}
+	}
+	
+}
+```
+
+* Construtores
+```csharp
+public class Pessoa {
+	public Pessoa() {
+		//Padrao, permite nao ter input ao instanciar a classe
+	}
+	
+	public Pessoa(string property) {
+		//Obriga passa parametro ao instaciar a class, pode ter mais de um construtor
+		Property = property;
+	}
+
+	public string Property {get; set;}
+	public string Method(){}
+}
+
+Pessoa pessoaInstancia01 = new Pessoa("Nome");
+Pessoa pessoaInstancia02 = new Pessoa();
 ```
