@@ -203,6 +203,53 @@ int.TryParse(a, out b);
 ```
 *NT.: mesmo que a conversao de erro, o TryParse ira retornar o segundo valor expecificado e continua o programa
 
+### Manipulacao de Dados
+* Concatenaçao/Interpolaçao de String:
+```csharp
+string concatenacao = "contatenando" + " duas strings";
+string interpolacao = $"{Var} Concatenando uma propriedade com uma string";
+```
+
+* Formatar para valor Monetario:
+```csharp
+decimal money = 1000.45M;
+
+Console.writeLine($"{money:C"); //Formatacao 'Currency' para valor movetario do pais do sistema
+```
+> NT* Output:R$ 1.000,45
+
+* Alterando Localizacao (Locale) do Codigo:
+```csharp
+using System.Globalization;
+
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");  //Trava Cultura para todo o sistema
+
+Console.writeLine(money.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR")));
+```
+
+* Tratamento de String
+```csharp
+int numero = 2000
+Console.WriteLine(numero.ToString("N2")); //Numero com 2 Casas Decimais
+Console.writeLine(numero.ToString("P")); //Porcentagem
+Console.writeLine(numero.ToString("##-###")); //Personalizado, # = Digito
+```
+
+### DateTime
+* Convertendo Data Personalizada para DateTime com tratamento de erro
+```csharp
+string dataString = "2022-04-17 18:00";
+
+bool sucesso = DateTime.TryParseExact(dataString, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data);
+if (sucesso) {
+	Console.WriteLine($"Convertido com sucesso para: {data});
+
+} else {
+	Console.WriteLine("Falha na Conversao");
+}
+```
+
+*
 ### Operadores
 #### Ordem dos Operadores
 1. ()
@@ -290,80 +337,109 @@ do {
 ```
 *NT.: Pode ser Iterronpido com 'break;'
 
-### Arrays
-* Criando um Array com um tamanho de 4:
+### Colecoes
+#### Arrays
+* Implementando um Array:
 ```csharp
-int[] array = new int[4];
-```
+int[] arrayConst = new int[4]; //Declarando um array e o tamanho dele
+int[] array = new int[] {42, 71, 22, 30}; //Declarando um array o tamanho pela quantidade de elementos adicinados durante a declaracao.
 
-* Criando um array de tamanho 4, passando valores:
-```csharp
-int[] array = new int[] {42, 71, 22, 30};
-```
+arrayConst[0] = 12; //Modificando o valor no index especificado, erro se index nao valido.
+arrayConst[1] = 22;
+arrayConst[2] = 32;
+arrayConst[3] = 42;
 
-* acessando item no array:
-```csharp
-array[0] = 42;
-```
+foreach(int item in arrayConst) {
+	Console.WriteLine(item); //Percorre a partir do primeiro (index 0)
+}
 
-* acessando array usando for:
-```csharp
 for(int i = 0; i < array.Length; i++) {
-	CODE_BLOCK;
+	Console.WriteLine(array[i]); //percorrendo um array com Length().
 }
+
+Array.Resize(ref array, 8); //redimenciona o array 'array' para 8
+
+Array.Copy(arrayConst, array, 4); //copia os items do arrayConst para array ate o index 4.
 ```
 
-* Copiando os elementos de um array para outro:
-```csharp
-int[] array2 = new int[8];
-Array.Copy(array, array2, 4);
-```
-* i.e (array, arrayTarget, indexTarget), ira copiar de um array para outro do index 0 ate o indexTarget
-
-* acessando array usando foreach:
-```csharp
-foreach(int valor in array) {
-	CODE_BLOCK;
-}
-```
-
-* aumentar tamanho do array:
-```csharp
-Array.Resize(ref array, 8);
-```
-
-### Listas / Lists
+#### Listas / Lists
 * Vantagem de Uma Lista:
 	1. Gerencia Tamanho automaticamente.
 	
-* Declarando uma Lista:
+* Implementando uma Lista:
 ```csharp
-List<int> lista1 = new List<int>();
-```
+List<int> = lista = new List<int>(); //Declarando uma lista 
 
-* Adicionando Elementos a uma lista:
-```csharp
-lista1.Add(12);
-lista1.Add(20);
-```
+lista.Add(12); //Adiciona um item ao final lista
+lista.Add(45);
+lista.Add(22);
+lista.Add(30);
 
-* Removendo Elementos de uma Lista:
-```csharp
-lista1.Remove(12);
-```
-
-* Acessando Lista usando for:
-```csharp
-for(int i = 0; i < lista1.Count;i++){
-	CODE_BLOCK;
+foreach(int item in lista) {
+	Console.WriteLine(item); //Percorre a partir do primeiro
 }
+
+lista.Remove(45); //Remove o valor especificado
 ```
 
-* Acessando Lista usando foreach:
+#### Fila / Queue
+* FIFO: First In First Out
+* Implementando uma fila:
 ```csharp
-foreach(int item in lista1) {
-	CODE_BLOCK;
+Queue<int> fila = new Queue<int>();  //Declarando uma fila
+
+file.Enqueue(21); //adicionando um elemento a fila
+fila.Enqueue(30);
+fila.Enqueue(42);
+fila.Enqueue(12);
+
+foreach(int item in fila) {
+	Console.WriteLine(item); //Percorre a partir do primeiro elemento
 }
+
+fila.Dequeue(); //Remove o primeiro elemento da lista
+```
+
+#### Pilha / Stack 
+* LIFO: Last In First Out 
+* Implementando uma pilha:
+```csharp
+Stack<int> pilha = new Stack<int>(); //Declarando uma pilha
+
+pilha.Push(22);
+pilha.Push(32);
+pilha.Push(52);
+pilha.Push(12);
+
+foreach(int item in pilha) {
+	Console.WriteLine(item); //Percorre a partir do ultimo elemento
+}
+
+pilha.Pop(); //Remove o ultimo elemento da pilha
+```
+
+#### Dicionarios / Dictionary
+* Armazena dados em pares de Chave:Valor.
+* Implementando Dictionary:
+```csharp
+Dictionary<string, string> estados = new Dictionary<string, string>(); //Declarando um Dicionario com chave 'string' e valor 'string'.
+
+estados.Add("BA", "Bahia"); //Adicionando uma chave:valor para o dicionario.
+estados.Add("SP", "Sao Paulo");
+estados.Add("MG", "Minas Gerais");
+estados.Add("AL", "Alagoas");
+
+foreach(var item in estados) {  //var reconhece que Data Type e: KeyValuePair<string, string> item
+	Console.WriteLine($"Chave: {item.Key}, Valor: {item.Value}");
+}
+
+estados["SP"]; //retorna o valor com chave 'SP'.
+
+estados["SP"] = "Sao Paulooooo"; //Altera o valor pela chave. NT* Chaves nao podem ser alteradas.
+
+estados.Remove("BA"); //Remove elementos pela chave.
+
+estados.ContainsKey("BA"); //Verifica se a Chave 'BA' ja existe.
 ```
 
 ### Funcoes/Metodos
@@ -389,6 +465,72 @@ Console.Clear();
 * Encerrar Programa:
 ```csharp
 Environment.Exit(0);
+```
+
+### Excecoes / Exceptions
+> o erro retornado (exception) é chamado 'stack trace'
+* excecao ao ler um arquivo:
+```csharp
+string[] linhas = File.ReadAllLines("Path_To_File");
+foreach(string linha in linhas) {
+	Console.WriteLine(linha);
+}
+```
+
+* Tratamento de excecao com Excecao Generica:
+```csharp
+try {
+	string[] linhas = File.ReadAllLines("Path_To_File");
+	
+	foreach(string linha in linhas) {
+		Console.WriteLine(linha);
+	}
+	
+} catch(Exception excep) {
+	Console.WriteLine($"Ocorreu uma excecao generica. {excep.Message}");
+}
+
+```
+
+* Excecoes Genericas e Especificas:
+	* Generico: Exception 
+	* Especifica: FileNotFoundException
+```csharp
+try {
+	string[] linhas = File.ReadAllLines("Path_To_File");
+	
+	foreach(string linha in linhas) {
+		Console.WriteLine(linha);
+	}
+	
+} catch(FileNotFoundException excep) {
+		Console.WriteLine($"Arquivo nao encontrado. {excep.Message}");
+		
+} catch(DirectoryNotFoundException excep) {
+	Console.WriteLine($"Caminho da pasta nao encontrado. {excep.Message}");
+	
+} catch(Exception excep) {
+	Console.WriteLine($"Ocorreu uma excecao generica. {excep.Message}");
+}
+
+```
+
+* Finally
+```csharp
+try {
+	string[] linhas = File.ReadAllLines("Path_To_File");
+	
+	foreach(string linha in linhas) {
+		Console.WriteLine(linha);
+	}
+	
+} catch(Exception excep) {
+	Console.WriteLine($"Ocorreu uma excecao generica. {excep.Message}");
+
+} finally {
+	Console.WriteLine("A Tentativa foi executada com sucesso.");
+}
+		
 ```
 
 ### Classes
