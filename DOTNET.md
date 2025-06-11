@@ -214,7 +214,7 @@ string interpolacao = $"{Var} Concatenando uma propriedade com uma string";
 ```csharp
 decimal money = 1000.45M;
 
-Console.writeLine($"{money:C"); //Formatacao 'Currency' para valor movetario do pais do sistema
+Console.writeLine($"{money:C}"); //Formatacao 'Currency' para valor movetario do pais do sistema
 ```
 > NT* Output:R$ 1.000,45
 
@@ -584,4 +584,65 @@ public class Pessoa {
 
 Pessoa pessoaInstancia01 = new Pessoa("Nome");
 Pessoa pessoaInstancia02 = new Pessoa();
+```
+
+# Paradigmas
+> modelo de tecnicas, estrutura e formas de solucionar um problema.
+
+* Tipos mais usados
+	* programacao orientada a objetos
+	* programacao Estruturada
+	* programacao Imperativa
+	* programacao Procedural
+	* programacao Orientadas a eventos
+	* programacao logica
+
+## POO / OOP
+> Programacao Orientada a Objecto (POO) ou Object Oriented Programming (OOP)
+
+* paradigma de programacao composto de quatro pilares:
+	* Abstracao
+	* Encapsulamento
+	* Heranca
+	* Polimofismo
+	
+
+* Representa conceitos do mundo atraves de Classes, Implementando atraves de objetos
+	
+### Abstracao
+> Abstrai um objeto do mundo real para um contexto especifico, considerando apenas os atributos importantes para a situacao.
+
+* e.g
+	* Pessoa:
+		* Nome: string,
+		* Idade: int,
+		* apresentar()
+		
+### Encapsulamento
+> Serve pra proteger uma classe e definir limites para a alteracao das propriedades
+
+* Oculta seu comportamento e expoe somente o necessario.usando os methodos get e private.
+
+* e.g 
+```csharp
+class Conta {
+	public Conta(int numeroConta, decimal saldoInicial) {
+		NumeroConta = numeroConta;
+		_saldo = saldoInicial;
+	}
+	
+	public int NumeroConta {get; set;}
+	private decimal _saldo;
+	
+	public void Sacar(decimal valor) {
+		if (_saldo >= valor) {
+			_saldo -= valor;
+			Console.WriteLine("Saldo realizado com sucesso");
+		
+		} else {
+			Console.WriteLine("Saque acima de saldo disponivel");
+			
+		}
+	}
+}
 ```
