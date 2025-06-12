@@ -1,4 +1,5 @@
 # Dotnet
+
 ## Environment
 ```mermaid
 flowchart LR;
@@ -61,13 +62,16 @@ dotnet build
 dotnet run
 ```
 
+* Para verificar instalaco do dotnet:
+```csharp
+dotnet --info
+```
+
 * Compilador Dotnet:
 ```mermaid
 flowchart LR;
-c#Code --> C#Compiler --> IL_AKA_IntermediaryLanguage Code_.exe_AND.dll --> JITCompiler_AKA_JustInTime --> NativeCode_AKA_Binary
+Code --> Compiler --> IL'IntermediaryLanguage' --> JIT'JustInTime'Compiler --> NativeCode'Binary'
 ```
-
-* verificar .net no cmd: "dotnet --info"
 
 ## C# 
 * Exemple:
@@ -625,7 +629,7 @@ Pessoa pessoaInstancia02 = new Pessoa();
 
 * e.g 
 ```csharp
-class Conta {
+public class Conta {
 	public Conta(int numeroConta, decimal saldoInicial) {
 		NumeroConta = numeroConta;
 		_saldo = saldoInicial;
@@ -643,6 +647,59 @@ class Conta {
 			Console.WriteLine("Saque acima de saldo disponivel");
 			
 		}
+	}
+}
+```
+
+### Heranca
+> permite reutilizar atributos, metodos e comportamentos de uma classe em outra
+
+* NT.: o c# so permite uma heranca por vez
+
+* e.g.:
+```csharp
+public class Pessoa {
+	public string Nome {get; set;}
+	public int Idade {get; set;}
+}
+
+public class Aluno : Pessoa{
+	public void Apresentar() {
+		Console.WriteLine($"Hello, I'm {Nome}, i'm {Idade} years old.");
+	}
+}
+```
+
+### Polimorfismo
+> Permite a sobrescrecao de metodos das classes filhas para que se comportem de forma diferente
+
+* Polimorfismo em tempo de execucao (Override / Late Binding
+```csharp
+public class Pessoa {
+	public string Nome {get; set;}
+	public int Idade {get; set;}
+
+	public virtual void Apresentar() {
+		Console.WriteLine($"Hello, I'm {Nome}, i'm {Idade} years old.");
+	}
+}
+
+public class Aluno : Pessoa {
+	public override void Apresentar() {
+		Console.WriteLine($"Hey, I'm {Nome} I {Idade}");
+	}
+}
+```
+
+* Polimorfismo em tempo de compilacao (Overload/Early Binding)
+```csharp
+public class Calculadora {
+	public int Somar(int n1, int n2) {
+		return n1 + n2;
+	}
+	
+	public int Somar(int n1, int n2, int n3) {
+		return n1 + n2 + n3;
 	}
 }
 ```
