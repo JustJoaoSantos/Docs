@@ -541,6 +541,7 @@ try {
 * Exemplo:
 ```csharp
 public class ClassName {
+	private string _field;
 	public string Property {get; set;}
 	public void Methods() {}
 }
@@ -700,6 +701,132 @@ public class Calculadora {
 	
 	public int Somar(int n1, int n2, int n3) {
 		return n1 + n2 + n3;
+	}
+}
+```
+
+### Classe Abstrata
+> Classes que nao podem ser instanciada, existe exclusivamente para ser herdada
+
+```csharp
+public abstract class Conta {
+	protected decimal saldo;
+	
+	public abstract void Creditar(decimal valor);
+	
+	public void ExibirSaldo() {
+		Console.WriteLine($"saldo: {saldo}");
+	}
+}
+
+public class Corrent : Conta {
+	public override void Creditar(decimal valor) {
+		saldo += valor;
+	}
+}
+```
+
+### Construtor por heranca
+```csharp
+public abstract class Pessoa 
+{
+	public Pessoa(string nome) 
+	{
+		Nome = nome;
+	}
+	
+	public string Nome{get; set;}
+	public int Idade{get; set;}
+}
+
+public class Aluno : Pessoa 
+{
+	public Aluno(string nome) : base(nome) 
+	{
+	
+	}
+}
+
+```
+
+### Classes/metodos/propriedades seladas
+> Tem como objectivo de impedir que outras classes herdem ela, 
+> NT* tambem existe metodos e propriedades seladas que nao podem ser sobrescritos pelas classes filhas.
+
+```csharp
+public sealed class Professor : Pessoa { //Pode herdar de alguem, mas nao pode ter classes deridadas
+	public string Cargo {get; set;}
+	
+	public sealed void Apresentar() {
+		Console.writeLine("Someting from professor);
+	}
+}
+
+public class Diretor : Professor { //Erro: Classe pai selada, nao pode ser derivada
+	public override void Apresentar() {
+		Console.WriteLine("Someting from director); //Erro: metodo pai selado, nao pode ser sobrescrito
+	}
+}
+```
+
+### Classe Object
+> System.Object e a classe mae de todas as classes da hierarquia do .NET
+> Todas as classes derivam, direta ou indiretamente da classe object
+
+```csharp
+public class  Computador
+{
+	public override string ToString() 
+	{ 
+		return "Metodo ToString() da classe object sobrescrito.";
+	}
+}
+
+
+
+Computador c = new Computador();
+
+c.GetHashCode();
+c.ToString();
+```
+
+### Interfaces
+> Um contrato que pode ser implementado por uma classe, se comporta de forma semelhante a uma classe abstrata.
+> Ao contrario de heranca de classes mais de um interface pode ser implementada em um classe ao mesmo tempo.
+```csharp
+public interface ICalculadora 
+{
+	int Somar(int n1, int n2);
+	int Subtrair(int n1, int n2);
+	int Multiplicar(int n1, int n2);
+	int Dividir(int n1, int n2);
+	
+	int modulo(int n1, int n2) //por possui um body a implementacao deste metodo se torna opcional.
+	{
+		return n1 % n2;
+	}
+}
+
+public class Calculadora : ICalculadora //Calculadora implementa interface Calculadora
+{  
+	public int Somar(int n1, int n2) 
+	{
+		throw new NotImplementedException();
+	}
+	
+	public int Subtrair(int n1, int n2) 
+	{
+		throw new NotImplementedException();
+	}
+	
+	public int Multiplicar(int n1, int n2) 
+	{
+		throw new NotImplementedException();
+	}
+	
+	public int Dividir(int n1, int n2) 
+	{
+		throw new NotImplementedException();
 	}
 }
 ```
