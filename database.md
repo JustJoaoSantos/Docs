@@ -3,21 +3,16 @@
 
 * e.g API -> Banco de dados <- Web <- Cliente
 
-## Bancos de dados relacional
+- DBMS:
+	- Database Management System, software utilizado para acessar, manipular e monitorar um sistema de banco de dados.
+
+
+## Bancos de dados relacional (SQL)
 > Mais utilizado atualmente, armazenando dados estruturados, sendo organizado em tabelas, com colunas e linhas, que se relacionam entre si
 e.g SQL server, Oracle database, MySQL, etc.
 
-### Tabelas
-> Sao dados estruturados e organizados logicamente em formato de linha e coluna
-
-## Banco de dados nao-relacional
-> os dados nao sao armazenados em tabelas mas de maneira nao estruturadas(.mp3, posts, .txt, .json) ou semi-estruturados 
-e.g mongoDB
-
-* existem varios tipos: document db, key-value db, wide-column stores e graph db. 
-
-## DBMS
-> Database Management System, software utilizado para acessar, manipular e monitorar um sistema de banco de dados.
+- Tabelas
+	- Sao dados estruturados e organizados logicamente em formato de linha e coluna
 
 ### SQL Server Management Studio
 #### SQL Server Configuration Manager
@@ -25,31 +20,30 @@ e.g mongoDB
 	* Automatic / Manual
 	* se deixado automatico o servido sera ligado durante a inicializacao da maquina/Computador.
 
-## Linguagem SQL
+### Linguagem SQL
 > Structured Query Language: usado para consulta e manipulacao de dados.
 
-### SQL Commands
-* DDL: Data Definition Language
+- DDL: Data Definition Language
 	* Create, Drop, Alter, Truncate
 	
-* DCL: Data Control Language
+- DCL: Data Control Language
 	* Grant, Revoke
 	
-* DML: Data Manipulation Language	
+- DML: Data Manipulation Language	
 	* Insert, Update, Delete
 
-* TCL: transaction ControlLanguage
+- TCL: transaction ControlLanguage
 	* Commit, Rollback, Save Point
 
-* DQL: Data Query Language
+- DQL: Data Query Language
 	* Select
 	
-* Comentarios:
+- Comentarios:
 ```sql 
 --Isso e um Comentario.
 ```
 
-#### Tipos de Dados
+- Tipos de Dados:
 * char(n): valor fixo, maximo permitido 8000 characters
 * varchar(n): variavel com valor maximo, maximo permitido 8000 characters
 * varchar(max): variavel com valor maximo de 1,073,741,824 chars 
@@ -167,7 +161,7 @@ ROLLBACK
 
 
 
-### Built-in Functions
+#### Built-in Functions
 * Contando linhas na tabela 
 ```sql 
 SELECT COUNT(*) QuantProdutos FROM Produtos  --Retorna o numero de linhas(todas) na tabela Produtos. nomiando a coluna de contagem como QuantProdutos.
@@ -253,4 +247,243 @@ CREATE TABLE Enderecos (
 SELECT * FROM Clientes 
 INNER JOIN Enderecos ON Clientes.Id = Enderecos.IdCliente --Junta a tabela de endereco na tabela de cliente onde o id do cliente e igual a IdCliente da tabela enderecos.
 WHERE Clientes.Id = 4
+```
+
+## Banco de Dados Nao-relacional (NoSQL)
+> os dados nao sao armazenados em tabelas mas de maneira nao estruturadas(.mp3, posts, .txt, .json) ou semi-estruturados 
+> NOSQL (Not Only SQL)
+- Principais vantagens:
+	- Escalabilidade,
+	- Alta Performance,
+	- Adaptabilidade
+
+- Diferencas:
+	- Escalabilidade: 
+		- relacional: escalabilidade vertical, aumento da capacidade para um unico recurso, processador, memoria e disco rigido.
+		- noSQL: escalabilidade horizontal, particiona dados (sharding) entre os nós(nodes) é o mais conhecido.
+		
+	- Schema:
+		- relacional: tabela -> linha -> colunas -> PK, FK
+		- noSQL: Schema-free/Schemaless
+		
+	- Performance:
+		- Relacional: depende do disco rigido.
+		- noQSL: depende do cluster e rede.
+	
+	- Transacoes:
+		- relacional: ACID: Atomicidade, Consistencia, Isolamento, Durabilidade.
+		- noSQL: BASE: BAsically Available, Soft-State, Eventually Consitent
+		
+### Tipos de Banco de dados
+- NoSQL:
+	- MongoDB - Document
+	- Redis - Key-Value
+	- Cassandra - wide-column
+	- Neo4j - Graph
+		
+- Tipos de bancos NoSQL:
+	- Document Store,
+	- Key-Value Store,
+	- Wide-Column Store,
+	- Graph Store: usado em deteccao de fraudes, mecanismos de recomendacao, etc.
+		
+#### Neo4J
+> Utiliza a linguagem cypher
+> tipo graph store.
+
+- exemplo de Estruturas:
+```
+CREATE(variable:Label)
+```
+
+- Criando um nó com a label(optional) Cliente.
+```sql 
+CREATE (:Client {name: "John", age: 28, hobbies: ['comer, beber']})
+```
+
+- Deletando um nó:
+```sql 
+MATCH (john:Client {name: "John}) DELETE john;
+```
+
+- Alterando um nó:
+```sql 
+MATCH (patrick:Client {name: "Patrick"}) SET patrick.idade = 52;
+```
+
+- Alterando a Label de um nó:
+```sql 
+MATCH (patrick:Client {name: "Patrick"}) SET patrick:ClientAlter;
+```
+
+- Criando um nó com um relacionamento:
+```sql 
+CREATE (:Client {name: "Bia", age: 30, hobbies: ['tocal musica]}) - [:Bloqueado] -> (:Client {name: "Patrick", hobbies: ['beber']})
+```
+
+- Criando um relacionamento com nós pre-definidos:
+```sql  
+MATCH (john:Client {name:"John"}), (bia:Client {name: "Bia"}) CREATE (john) - [:Bloqueado] -> (bia)
+```
+
+- Deletando relacionamento entre nós:
+```sql 
+MATCH (john:Client {name: "John"}) -[relaciona:Bloqueado]-() DELETE relaciona
+```
+
+- Consultando um dado:
+```sql 
+MATCH (john) RETURN john;
+```
+
+- Listando todos:
+```sql 
+MATCH (todos) RETURN todos;
+```
+
+#### Cassandra
+> utiliza a linguage cql (Cassandra Query Language)
+> tipo wide-column 
+
+- Criando e usando uma tabela:
+```sql 
+CREATE KEYSPACE nome_database WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+use nome_database;
+```
+
+- criando uma coluna:
+```sql 
+CREATE COLUMNFAMILY clientes (nome TEXT PRIMARY KEY, idade int);
+```
+- retorna todos os dados do database:
+```sql 
+SELECT * FROM clientes;
+```
+
+- Inserindo um dado no database:
+```sql 
+INSESRT INTO clientes (nome, idade) VALUES ('John Doe' , 28);
+```
+
+- Inserindo um JSON no banco de dados:
+```sql
+INSERT INTO clientes JSON '{"Nome" : "Patrick"}'
+```
+
+- Filtragem de dados:
+```sql 
+SELECT * FROM clientes WHERE nome = 'John';
+```
+
+- retornando dados em formato JSON:
+```sql 
+SELECT JSON * FROM clientes;
+```
+
+- Alterando Database:
+```sql 
+UPDATE clientes SET idade = 40 WHERE nome = "John";
+```
+
+- Alterando Tabela 
+```sql 
+ALTER COLUMNFAMILY clientes ADD hobby text;
+```
+
+- Deletando um registro:
+```sql 
+DELETE FROM clientes WHERE nome='John';
+```
+
+#### Redis
+> 
+> tipo chave-valor
+
+- registrando um par chave:valor ao banco de dados:
+```sql 
+SET usuario1:nome "John"
+```
+
+- Consultando dados registrados:
+```sql 
+GET usuario1:nome 
+```
+
+- registrando um valor  JSON:
+```sql 
+SET usuario '{"nome": "Patrick", idade : 31}'
+```
+
+- registrando um valor temporario, que expire apos determinados segundos:
+```sql 
+SET usuario2:nome "Doe" EX 10
+```
+
+- cancela o tempo de expiracao:
+```sql 
+PERSIST usuario2:nome 
+```
+
+- verifica se chave existe, retornando 0 ou 1:
+```sql 
+EXISTS usuario:nome
+```
+
+- inserindo listas em um registro:
+```sql 
+LPUSH usuario1:hobbies "cacar"
+LPUSH usuario1:hobbies "beber"
+```
+
+- accesando um registro do tipo lista:
+```sql 
+LINDEX usuario1:hobbies 0
+```
+
+- listando listas do index 0 ate o index 1:
+```sql 
+LRANGE usuario1:hobbies 0 1
+```
+
+- retorna o tipo do registro:
+```sql
+TYPE usuario1:nome 
+```
+
+- retorna o tempo de expiracao de um registro:
+```sql
+TTL usuario1:nome
+```
+
+- Deletar um registro:
+```sql 
+DEL usuario1:hobbie 
+```
+
+#### MongoDB 
+> utiliza-se o Studio 3T para visualizar o DB e o Docker para inicializar e terminar o DB.
+> tipo Document
+
+- Characteristicas:
+	- Suporte a indeces,
+	- Auto-Sharding,
+	- Map-Reduce,
+	- GridFS
+	
+- organizacao:
+	- Document => Tupla/Registro,
+	- Collection => Tabela,
+	- Embedding/Linking => Join,
+	
+- Quando usar:
+	- Grande volume de dados.
+	- Dados nao necessariamente estruturados.
+	
+- Quando nao usar:
+	- Necessidade de relacionamentos/joins.
+	- Necessidade de propriedades ACID e transacoes.
+	
+- listar banco de dados:
+```sql 
+show databases
 ```
