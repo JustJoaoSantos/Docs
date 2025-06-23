@@ -49,3 +49,8 @@ docker exec -it db bash
 ```docker 
 docker exec -it db mongosh -u JustFox -p JustFox
 ```
+
+- para se conectar ao DB usando mongoshell
+```docker
+mongosh --host 127.0.0.1:27017 -u <USUARIO> -p <SENHA>
+```

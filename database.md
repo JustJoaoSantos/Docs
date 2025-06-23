@@ -487,3 +487,152 @@ DEL usuario1:hobbie
 ```sql 
 show databases
 ```
+
+- Schema Design:
+	- Recomendacoes de acordo com relacionamentos:
+		- One-to-One: preferivel key-value 
+		- One-to-few: preferivel embedding 
+		- one-to-many/many-to-many: preferivel relacionamento por referencia
+		
+- Boas Praticas:
+	- Evitar documentos muito grandes,
+	- Usar nome de campos objetivos e curtos,
+	- Analise as suas queries utilizando explain()
+	- Atualize apenas os campos alterados
+	- Evitar negacoes em queries
+	- Limite o crescimento de arrays/listas dentro dos documentos
+	
+- JSON vs BSON
+	- BSON:
+		- serializacao codificada em binario de documentos semelhante a JSON 
+		- contem extencoes que permitem a representacao de tipos de dados que nao fazem parte da especificacao JSON, e.g Date, ObjectID, etc.
+		
+	- JSON:
+		- somente possui dados primitivos, e.g string, int, etc.
+		
+- Agregacoes
+	- procdimento de precessar dadso em uma ou mais etapas onde o resultad de cada etapa e utilzado na etapa seguinte
+	- tipos de proposito unico:
+		- count, que permite a contagem de items:
+			- db.getCollection('test').count({})
+		- distinct
+		
+	- as pipelines mais basicas fornecem filtros e operadores.
+	- operadores: $group, $addField
+	- funcoes: $sum, $avg, $max, $min, $match
+	- operadores logigos: $and, $or, $not, $nor
+	- operadores de comparacao:
+		- Maior que: $gt
+		- Menor que: $lt 
+		- Diferencte de: $nte 
+		- Iqual a: $eq
+		- Menor ou iqual a: $ite 
+		- Maior ou iqual a: $gte
+##### Linguagem 
+- monstra todos os databases:
+```sql 
+show databases 
+```
+
+- monstra todas as collections:
+```
+show collections
+```
+
+- *CRIACAO*
+- cria ou muda para um banco de dados:
+```sql 
+use nome_banco_de_dados
+```
+
+- cria explicidamente uma collection (permite o uso de validadores):
+```sql
+use nome_banco_de_dados
+db.createCollection("test", {capped: true, max: 2, size: 2});
+```
+
+- cria implicitamente uma collection:
+```sql 
+db.test2.insertOne({"idade": 28});
+```
+
+- *INSERCAO DE DADOS*
+- inserindo um dado em uma collection:
+```sql 
+db.test.insertOne({"nome": "Teste 01"});
+```
+
+- multipla insercao/multiwrite:
+```sql 
+db.test.insert({"nome":"John", "idade":22}, {"nome":"Doe", "idade":50});
+```
+
+- *BUSCAS* 
+
+- buscando um todos os valores na collection: 
+```sql 
+db.test.find({});
+```
+
+- buscando valores com filtros:
+```sql 
+db.test.find( {"age":10} );
+```
+
+- buscando o primeito match:
+```sql 
+db.test.find( { "age": 10 } ).limit(1);
+```
+
+- buscando com multiplas condicoes, condicao IN range:
+```sql 
+db.test.find({"age": {$in: [30, 41]} });
+```
+
+- buscando com condicao OR:
+```sql
+db.test.find({$or: [ {"nome": "John"}, {"idade": 20} ] });
+```
+
+- buscando com condicao ate valor:
+```sql 
+db.test.find({"age": {$lt: 55} });
+```
+
+- *ALTERACAO/ATUALIZACAO*
+- criando um index:
+```sql 
+db.test.createIndex({nome: "John"}, {"nome": "idx_nome"});
+```
+
+- atualizando toda a collecao e alterando um valor, usando um id retornado com find()
+```sql
+db.test.save( {"_id":ObjectId("00000000"), "nome": "John", "idade": 30} );
+```
+
+- alterando um dado de uma collection:
+```sql 
+db.test.update( {"name": "John"}, {$set: {"idade": 35}} );
+```
+
+- alterando todos os dados que atendem certo requisito, i.e idade = 20:
+````sql 
+db.test.update( {"idade": 20}, {$set: {"idade": 25}}, {multi: true} );
+```
+
+- alterando varios dados com updateMany():
+``` sql 
+db.test.updateMany( {"age": 44}, {$set: {"age": 55}}  );
+```
+
+- *DELECAO*
+- deleta primeiro registro que atende condicao:
+```sql 
+db.test.deleteOne( {"age": 55} );
+```
+
+- deleta todos registros que atendem condicao:
+```sql 
+db.test.deleteMany({"age": 55});
+```
+
