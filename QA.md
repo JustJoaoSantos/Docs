@@ -71,7 +71,7 @@
 		
 - CTFL (Certified Tester Foundation Level)
 	- Base das certificacoes,
-	- Conhecimento pratico de conceitos fundamentais de tete de software,
+	- Conhecimento pratico de conceitos fundamentais de teste de software,
 	- Syllabus 3.1
 	
 ## QA
@@ -167,3 +167,297 @@
 	- Nao ter a visao do que ocorre em producao,
 	- Nao se importar com processos tecnicos do desenvolvimento
 	
+### O que é QA
+- Definicao de qualidade:
+	- NBR/ISO 9000:2005: "grau no qual um conjunto de caracteristicas inerentes satisfaz a requisitos"
+	- ISO/IEC 25010:2011: "capacidade do produto de software de satisfazer necessidades declaradas e implicitas sob condicoes especificadas."
+	
+	- Aspectos importantes:
+		- requisitos de software ssao a base para medir qualidade,
+		- padroes especificados definem conjunto de criterios em desenvolvimento,
+		- existem requisitos implicitos que nao sao mencionados que afetam diretamente a qualidade
+		
+- Percepcoes de qualidade:
+	- Visao transcendental: qualidade e reconhecida atraves de experiencia, mas sem uma definicao ou metrificacao,
+	- Visao do usuario: e personalizado de acordo com a necessidadee do usuario,
+	- Visao de manufatura: qualidade e relacionada com conformidade aos requerimentos,
+	- Visao de produto: produto com boas propriedades internas metrificaveis tera boas qualidades externas,
+	- Visao baseada em valor: representa o 'custo-beneficio' na visao do cliente
+	
+- Normas e padroes de qualidade
+	- normas tecnicas: documentos publicados por organizacoes profissionais que objetivam padronizar determinadas atividades, processos, etc.
+	- Organizacoes de padronizacao: 
+		- IEEE: Institute of Electrical and Electronics Engineers, 
+		- ISO: International Organization for Standardization, 
+		- IEC: International Electrotechnical Commission
+		
+	- Normas para qualidade de software:
+		- ISO 9000: Descreve fundmentos de sistema de gesta de qualidade e suas terminologias,
+		- ISO 9001: Especifica requisitos para sistema de gestao de qualidade,
+		- ISO 9004: Diretizes que consideram eficacia e eficiencia do sistema de gestao da qualidade,
+		- ISO 9126: Modelo de qualidade de produto de software,
+		- ISO 19011: Diretrizes sobre auditoria de sistema de gestao da qualidade de software
+		
+	- Normas para Engenharia de software:
+		- ISO/IEC 14598: Processo de avaliacao de produtos de software na visao de desenvolvedor, adquirente e avaliador,
+		- ISO/IEC/IEEE 12207:2017: Procesos de ciclo de vida do software,
+		- ISO/IEC/IEEE 15288:2015: Procesos de ciclo de vida do software,
+		- ISO 19011: Diretrizes sobre auditoria de sistema de gestao de qualidade de software,
+		- IEEE 1012:2016: Verificacao e validacao para sistemas, software e hardware
+		- IEEE 730:2014: Requerimentos para planejametno, controle e execucao de processos de garantia de qualidade de software,
+		- ISO/IEC/IEEE 15289:2019: Foco no processo de gerenciamento de informacao,
+		- ISO/IEC/IEEE 29119:2013: Vocabulario, processo, documentacao, modelos e tecnicas para teste
+		
+		- Familia SQuaRE: ISO/IEC 25000 ~ 25099 (System and Software Quality Requirement and Evaluation) : Substitui ISO/IEC 9126
+			- Requerimento de qualidade,
+			- Modelo de qualidade,
+			- Gerenciamento de qualidade,
+			- Metrificacao de qualidade,
+			- Avaliacao de qualidade
+			
+- Processo da qualidade
+	- Stakeholders => requisitos => Processo de Software <= padroes
+	
+- Gerenciamento de qualidde de sotware
+	- Atividades do gerenciamento:
+		- Planejamento de qualidade,
+			- Determinar:
+				- Padroes e processos de qualidades a serem utilizados,
+				- metas especificas de qualidade,
+				- esforco e organizacao de atividade.
+				
+		- Garantia de qualidade,
+			- Atividades de que definem e avaliam a adequacao dos processos de software de forma a prover evidencias que estabelecem confianca no produto produzido
+			
+		- Controle de qualidade,
+			- Examinacao de artefatos do projeto para determinar se os padroes acordados estao sendo seguidos,
+			- Avaliacao de produtos intermediarios e do produto final
+			
+		- Melhorias de processos
+			- Se preocupa com melhorias na eficiencia, efetividade e quaisquer caracteristicas que tenham como meta principal a melhoria da qualidade do software
+			
+- Gerenciamento de defeitos
+	- Controle de qualidade:
+		- analise estatica: avaliacao de documentacao do software e codigo-fonte -> metodos formais,
+			- Code review,
+			- ferramentas de automacao de processos e verificacao de codigo,
+		- analise dinamica: relacionado a tecnicas com o codigo em execucao 
+			- testes manuais,
+			- testes automatizados
+		
+		- Validacao x Verificacao:
+			- Verificacao: garantir que o produto esta sendo construido corretamente,
+			- Validacao: o produto correto esta sendo construido
+			
+	- Caracterizando defeitos:
+		- Rastreamento de defeitos
+			- Entendimento do produto e dos tipos de defeitors encontrados,
+			- Facilitar correncao do produto ou do processo,
+			- Reportar status do produto,
+			- alinhamento de revisoes pelo time de desenvolvimento
+			
+		Defeito
+			- genericamente significa qualquer anomalia encontrado no produto
+			- definicoes:
+				- Erro: acao humana que produz um resultado incorreto,
+				- Defeito: imperfeicao ou deficiencia relacionada aos requerimentos e especificacoes do produto,
+				- Falha de sistema: evento no qual o sistema nao executa uma funcao sob limites especificos
+				
+			- motivos para erros:
+				- pressao do tempo,
+				- falha humana,
+				- inexperiencia,
+				- falta de comunicacao,
+				- complexidade de codigo, modelagem, arquitetura,
+				- complexidade de tecnologia,
+				- condicoes ambientes inesperadas
+				
+			- Ciclo de vida de um Bug/Defeito:
+				-					   | -> Duplicate/Rejected/Deffered/Not a Bug
+				- NEW -> Assigned -> Open -> Fixed -> Pending Retest -> Retest -> Verified -> Closed
+									   |  <-		reopen		       <- |
+									   
+					- NEW: defeito identificado e cadastrado pela primeira vez,
+					- assigned: defeito atribuito para avaliacao,
+					- Open: inicia analise e correcao,
+					- Fixed: finaliza correcao,
+					- Retest: estado de execucao de reteste,
+					- Verified: defeito corrigido,
+					- Reopen: defeito nao-corrigido,
+					- closed: defeito corrigido + testado + aprovado,
+					- Duplicate: efeito ja encontrado anteriormente,
+					- Rejected: defeito nao e novo
+					- deferred: sera corrigido em versoes futuras,
+					- Not a Bug: a anomalia nao e de fato um erro depois de ser analisado
+					
+			- Consideracoes importantes:
+				- os processos se adequam ao que o time e produto precisam,
+				- o time precisa estar de acorde e entender todo o fluxo de rastreamento,
+				- os defeitos precisam ser rastreados durante todo o ciclo de vida do processo de software,
+				
+				- Informacoes de um reporte:
+					- ID,
+					- Titulo resumindo o problema,
+					- Data/autor,
+					- identificacao do item sob teste e do ambiente,
+					- fase do ciclo de vida no qual o defeito foi observado
+					- Descrisao completa do defeito para reproducao,
+					- evidencia de auxilio na resolucao:
+						- logs,
+						- dumps de banco de dados,
+						- screenshots,
+						- gravacoes,
+					- resultado esperado,
+					- severidade,
+					- urgencia/prioridade,
+					- estado do defeito,
+					- conclusoes/sugestoes,
+					- impactos,
+					- historico,
+					- referencia do teste teste 
+			
+			- ferramentas uteis
+				- Gratuito: bugzilla, trac, redmine, mantis, etraxis
+				- Pago: reQtest, lighthouse, azure devops, axosoft
+				- Gratuito e Pago: jira, asana, trello, backlog
+				
+		- *Testes de software*
+			- Conceitos e objectivos:
+				- processo de avaliar reduzir risco de falhas de software em operacao,
+				- nao diz respeito somente ao ato de executar um teste
+				- faz parte do controle de qualidade
+			- objectivos gerais:
+				- evitar defeitos e avaliar produtos de trabalho,
+				- verificar cumprimento de requisitos,
+				
+			- testes X depuracao:
+				- teste mostram falhas causadas por defeitos de software,
+				- depuracao e um processo de investigacao e correcao do erro
+				
+			- Principios de testes:
+				1. teste mostra presenca de defeitos e nao a ausencia,
+				2. testes exaustivos sao impossiveis,
+				3. testes iniciais economizam tempo e dinheiro,
+				4. defeitos se agrupam,
+				5. o mesmo teste nao encontra novos defeitos -> atencao com testes de regressao,
+				6. o teste depende do contexto,
+				7. ausencia de erros é ilusao
+			
+			- Processo de testes:
+				- Fatores de influencia:
+					- modelo de ciclo de vida,
+					- niveis e tipos de testes,
+					- risco de produto e projeto,
+					- dominio do negocio,
+					- restricoes operacionais,
+					- politicas e praticas organizacionais,
+					- normas internas e externas
+					
+				- Atividades de testes:
+					- planejametno,
+					- monitoramento e controle do teste,
+					- analise,
+					- modelagem,
+					- implementacao,
+					- execucao,
+					- conclusao
+					
+				- planejamento do teste
+					- define propositos do teste,
+					- definir a abordagem do teste de acordo com restricoes do contexto
+					- especificar tarefas e estimativas de prazos
+					- estrategias:
+						- analitica: baseada na analise de algum fator,
+						- baseada em modelo: projetado com base em modelo de algum aspecto necessario do produto,
+						- metodica: conjunto pre-definido de testes, comparando as caracteriisticas de qualidade importantes,
+						- compativel com precesso: baseado em padroes da organizacao,
+						- dirigida: orientado pelos stakeholders,
+						- regressao: evitar regressao de recursos existentes,
+						- reativo: reativo ao componente ou sistema e aos eventos que ocorrem durante a execucao
+				
+				- analise do teste:
+					- base de teste e analisada de forma a analisar 'o que testar' de acordo com criterios pre-estabelecidos,
+					- avaliar os tipos de defeitos que podem ser encontrados,
+					- definir e priorizar condicoes de Testes
+				
+				- modelagem de testes 
+					- responde 'como testar?'
+					- testes sao elaborados em casos de teste de alto nivel,
+					- prioritizacao de casos de testes e conjunto de casos de testes 
+					- verificar infraestrutura necessaria e projetar ambiente de teste
+					
+				- Implementacao de Testes
+					- desenvolver e priorizar procedimentos de testes e possivelmente script automatizados,
+					- cria suites de testes,
+					- organizacao logica e eficiente da execucao dos testes,
+					- preparar dados de teste
+					
+				- execucao do teste
+					- testes sao executados conforme planejado, manual ou automatizado,
+					- compara resultados reais com resultados esperados,
+					- analisar anomalias,
+					- reportar e registrar anomalias,
+					- reteste
+					
+				- conclusao de teste
+					- coletar dados das atividades de testes concluidas
+					- criar relatorios e resumos
+					
+				- Niveis de Testes
+					- Sao grupos de atividades de testes que sao organizados e gerenciados juntos com relacao ao nivel de desenvolvimento:
+						- Niveis:
+							User Requirement -> Software Specification ->  High Level design -> Low level design -> coding -> unit testing -> integration testing  ->   system testing -> acceptance testing
+
+					- testes de componente ou unidade:
+						- foco em testar componentes do codigo de forma idependente
+						
+					- testes de integracao:
+						- foco na integracao entre componentes ou comunicacao de sistemas
+						
+					- testes de sistema:
+						- foco nos requisitos de ponta a ponta do sistema
+						
+					- testes de aceite/validacao:
+						- foco nos requisitos de ponta a ponta do sistema do ponto de vista validacao e conformidade com regras de negocio e necessidades do cliente
+						
+					- Piramide de teste:
+						- Secao baseada em testes manuais 
+									|
+						- testes automatizados de interface 
+						
+				- Tipos de testes
+					- grupos de atividades de testes destinado a verificar caracteristicas especificas de um sistema, com base em objetivos especificos
+						- avaliar caracteristica funcionais
+							- avaliacao de funcoes que o sistema deve executar
+							- desenvolvidos a partir de especificacoes de requisitos, historias de usuario, casos de uso
+						
+						- avaliar caracteristica funcionais
+							- avaliacao de caracteristicas nao funcionais como usabilidades, eficiencia de performance, seguranca, etc.
+							
+						- teste caixa-branca
+							- testes com base na estrutura interna do sistema: codigo-fonte, arquitetura, fluxo de dados 
+							
+						- testes de mudancas
+							- teste de confirmacao: verificacao apos defeito ser corrigido 
+							- teste de regressao: verificacao de efeitos colaterais nas alteracaoes de um componente do sistema
+							
+					- Tecnicas de testes 
+						- auxilio na identificacao das condicoes de testes, casos e seus dados
+							- Caixa-preta:
+								- Fundamentadas em documentos de requisitos, casos de uso, historias do usuario, etc,
+								- sao aplicaveis para testes funcionais ou nao-funcionais,
+								- foco nas entradas e saidas do testes, abstraindo a estrtura interna
+								
+							- Caixa-branca:
+								- Baseadas na estrutura interna do objeto de teste 
+								- podem ser usadas em todos os niveis de testes 
+								- normalmente usadas para teste a nivel de componente no codigo-fonte 
+									- teste de cobertura de intrucoes: testa instrucoes executaveis do codigo
+									- teste de cobertura de decisoes: testa as condicionais existente no codigo e o que e executada em cada decisao
+							
+							- Por experiencia:
+								- Baseadas em experiencia e intuicao de quem testa 
+								- pode-se identificar situacoes nao encontradas nos metodos mais sistematicos
+									- suposicao de erro
+									- teste exploratorio
+									- baseado em checklist
