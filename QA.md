@@ -461,3 +461,137 @@
 									- suposicao de erro
 									- teste exploratorio
 									- baseado em checklist
+									
+### Fundamentos de Automacao de Testes
+#### Fundamentos para projetos de automacao
+- Ciclo de vida do teste:
+	- Atividades de testes:
+		1. Planejamento
+		2. Monitoramento e controle, 
+		3. analise,
+		4. design/projeto,
+		5. implementacao,
+		6. execucao,
+		7. finalizacao
+		
+	- automacao como atividade de teste:
+		- processo de design de um testware:
+			1. software,
+			2. documentacao,
+			3. ambientes de teste,
+			4. dados de teste
+			
+		- atividade de teste relacionadas:
+			- implementacao de casos de testes automatizados,
+			- monitoramento e controle de execucao,
+			- interpretacao, relatorio e log de resultados
+			
+		- Objetivo da automacao:
+			- melhorar a eficiencia do testes,
+			- ampliar cobertura de testes,
+			- reduzir custo total de teste,
+			- diminuir tempo de execucao,
+			- aumenta frequencia de teste
+			
+		- vantagem da automacao:
+			- teste que nao pedem ser feitos de forma manual,
+			- complexidade pode aumentar -> tempo diminui,
+			- reduz erros humanos na validacao,
+			- feedback mais rapido,
+			- maior confiabilidade
+			
+		- desvantagem da automacao:
+			- custos adicionais,
+			- investimento inicial para configuracao da arquitetura de testes,
+			- investimento na arquitetura do software sob teste,
+			- complexidade de codificacao,
+			- manutencao de testes
+			
+		- ferramentas de suporte a testes automatizados:
+			- Framework de automacao de testes:
+				- Um bom framework garante beneficios para:
+					- implementar relatorios de testes,
+					- facilitar resolucao de problemas,
+					- facilitar configuracao de ambiente,
+					- documentar casos de teste,
+					- rastrear etapas dos casos de teste,
+					- facilitar manutencao dos testes,
+					- atualizacao dos testes automatizados,
+					- monitorar e restaurar execucao dos testes em caso de falha
+					
+#### Arquitetura generica e design de automacao
+- Padroes arquiteturais
+	- sao solucoes gerais e reutiilzaveis para resolver problemas recorrentes dentro de certo contexto,
+	- estao inseridos em um escopo maior do sistema,
+	> padrao arquitetural != padrao de projeto
+	
+	- tipos:
+		- N-camadas,
+		- cliente-servidor,
+		- broker,
+		- etc.
+		
+- padroes de Projeto
+	- sao solucoes gerais e reutilizaveis para problemas comuns relacionados a contrucao do projeto de software independente da linguagem.
+	- sao divididos em :
+		- padroes de criacao: factory method, abstract factory, singleton...
+		- padroes estruturais: adapter, composite, proxy...
+		- padroes comportamentais: command, observer, mediator...
+		
+- Camadas de testes:
+	- camada de geracao de teste:
+		- criacao manual de casos de teste,
+		- desenvolvimento, captura ou obtencao de dados de testes,
+		- geracao automatica de casos de teste a partir de modelos 
+	
+	- camada de definicao de teste:
+		- especificacao de casos de teste,
+		- definicao de dados de teste,
+		- especificacao de procedimentos de testes,
+		- definicao de scripts para execucao dos casos de testes,
+		- conceder acesso as bibliotecas
+		
+	- camada de exccucao de teste:
+		- executar casos de teste automaticamente,
+		- registrar execucoes,
+		- relatar execucoes
+		
+	- camada de adaptacao de teste:
+		- controlar ambiente de teste,
+		- interagir com sistema a ser testado,
+		- monitorar o sistema sendo testado,
+		- simular ou emular o ambiente sendo testado
+		
+- Consideracoes ao iniciar um projeto de automacao:
+	1. Qual atividade ou fase do processo de testes queremos automatizar?
+	2. qual nivel de teste queremos ter suporte?
+	3. qual o tipo de teste?
+	4. quem executara e implementara o teste?
+	5. quais projetos existem gratuitus e quais podem ser comprados?
+	6. quais tecnologias queremos ter suporte? e a complexidade?
+	7. que limguagens queremos utilizar?
+	8. qual modelo de ciclo de vida do software estamos inseridos?
+	9. qual a complexidade de implementacao e como afeta o projeto?
+	10. sera necessario treinamento?
+
+#### Padroes de projeto para automacao E2E (End to End)
+- Page Object Model 
+	- Vantagems:
+		- reaproveitamento de codigo,
+		- codigo mais limpo,
+		- facilidade de mantencao,
+		- independencia de testes
+	- desvantagens:
+		- necessaria boa compreensao de programacao e do padrao em si,
+		- elementos ficam isolados a uma pagina especifica,
+		- necessaria uma boa modelagem, caso contrario as refatoracoes seram constantes,
+		- projetos complexos demandam mais tempo para automacao
+		
+- Business-layer Page Object Pattern
+	- criado adicionando mais uma camada de abstracao, para evidar o aumento exponencial da complexidade do codigo criado pelo Page Object.
+	
+- ScreenPlay Pattern
+	- padrao simples criado em volta do usuario.
+	
+- App Actions
+	- utiliza a arquitetura do cypress a favor do desacoplamento entre a camada da aplicacao e o HTML.
