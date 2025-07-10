@@ -270,6 +270,10 @@ services:
 			- "27017:27017"
 		volumes:
 			- /docker/data/mongoDB:var/lib/mongoDB
+		networks: minha-rede
+	networks:
+		minha-rede:
+			driver: bridge
 ```
 
 - $docker compose up:
