@@ -1,0 +1,2 @@
+# atividade
+Para esta atividade, é importante que você elabore um quadro Scrum para organizar as suas tarefas diárias ou de estudos. Com isso, este quadro deve conter colunas que representem o progresso da atividade.
