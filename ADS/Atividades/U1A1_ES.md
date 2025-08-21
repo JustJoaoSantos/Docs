@@ -40,5 +40,3 @@ Conclusão do Relatório
 	- facilidade em ajustar-se a mudancas dos requisitos ao longo do desenvolvimento.
 - desvantagens:
 	- for cada iteracao ser uma versao funcional, se nao for planejado com cuidado pode resultar em incopatibilidades e inconsistencias entre iteracoes.
-
-## Caso de Uso

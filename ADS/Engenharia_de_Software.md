@@ -578,3 +578,112 @@
 	- proposta de mudanca ->
 	- processo de evolucao de software ->
 	- novo sistema
+	
+## U4A2 - Gestao de risco 
+- Debito tecnico
+	- acumulacao de compromissos ou decisoes tecnicas que, embora possam acelerar o desenvolvimento a curto prazo, aumentam o risco operacional ou tecnico no longo prazo.
+	- como lidar:
+		- praticas de desenvolvimento de software robusta;
+		- revisoes de codigo, testes rigorosos;
+		- design de codigo limpo;
+		- priorizacao da manutencao continua.
+		
+- Risco de software 
+	- incerteza: um risco pode ou nao se concretizar
+	- perda: consequencias indesejadas que ocorrerao se o risco se materializar
+	
+- Tipos de riscos 
+	- riscos de projeto: ameacas ao plano do projeto;
+	- riscos tecnicos: ameacas a qualidade e entrega do software;
+	- risocs de negocios: impacto na viabilidade do projeto ou produto.
+	
+- Principais fatores de riscos 
+	- risco de desempenho 
+		- refere-se a incerteza sobre se o produto atendera aos requisitos e sera adequado para o uso pretendido
+	- risco de custo 
+		- indica a incerteza sobre a manutencao do orcamento do projeto
+	- risco de suporte
+		- relaciona-se a incerteza sobre a facilidade de correcao, adaptacao e melhoria do software resultante
+	- risco de cronograma
+		- refleta a incerteza sobre a manutencao do cronograma do projeto e a entrega oportuna do produto
+
+- Priorizacao de risco 
+|                      RISCO                            |  Categoria | Probabilidade  | Impacto |
+| A estimativa de tamanho pode ser significamente baixa |     PS     |     60%        |    2	|
+| Numero de usuarios maior de que o planejado           |     PS     |     30%        |    3	|
+| Financiamento sera perdido                            |     CU     |     40%        |    1	|
+| cliente mudara os requisitos                          |     PS     |     80%        |    2	|
+| a tecnologia nao atingira as expectativas             |     TR     |     20%        |    1	|
+
+- valores de impacto 
+	- 1: catastrofico
+	- 2: critico
+	- 3: marginal
+	- 4: negligenciavel
+	
+## U4A3 - Metrica e analise de software 
+
+- Medicao de software 
+	- processo pelo qual numeros ou simbolos sao anexados aos atributos de entidades no mundo real para defini-los de acordo com regras claramente estabelecidas.
+
+- medidas: indicacao quantitativa da extensao, quantidade, capacidade ou tamanho de algun atributo de um produto ou processo.
+- metricas: medida quantitativa do grau com o qual um sistema, componente ou processo possui determinado atributo.
+- indicador: metrica ou combinacao de metricas que fornecem informacoes sobre o processo de software.
+
+- principios da medicao 
+	- uma metrica deve ter as propriedades matematicas desejadas;
+	- modificar o valor da metrica de acordo com o seu resultado;
+	- cada metrica deve ser validada em uma grande diversidade de contexto.
+	
+- ciclo de vida das metricas 
+	- definir requisitos de qualidade ->
+	- selecionar metricas ->
+	- definir a pontuacao ->
+	- definir criterios de avaliacao ->
+	- avaliar ->
+	- refletir sobre as metricas.
+	
+- etiqueta de metricas 
+	- use discernimento e sensibilidade organizacional ao analisar os dados das metricas.
+	- evite utilizar metricas para avaliar o desenvolvimento individual
+	- evite ameacar individuos ou equipes com base em metricas 
+	- nao interprete dados de metricas que apontam areas problematicas como "negativos". esses dados sao apenas indicativos de areas que requerem melhoria no processo.
+	- evite fixar-se excessivamente em uma unica metrica, negligenciando outras metricas importantes.
+	
+- programa de metricas 
+	- identificar as metas de negocio;
+	- formalizar as metas de medicao;
+	- identificar questoes quantificaveis e os indicadores associados que serao utilizados para  alcancar as metas de medicao;
+	- identificar os elementos de dados a serem coletados para construir os indicadores;
+	- identificar as medidas a serem utilizadas e definir suas operacionalizacoes;
+	- identificar as acoes a serem tomadas para implementar as medidas.
+	
+## U4A4 - reuso de software
+- Unidades de software reutilizadas 
+	- reuso de sistemas: sistemas completos, compostos de uma serie de programa de aplicacao podem ser reutilizados como parte de um sistema de sistemas.
+	- reuso de aplicacoes: uma aplicacao pode ser incorporada sem alteracoes em outros sistemas ou configurada para atender a diferentes clientes
+	- reuso de componentes: componentes de uma aplicacao, desde subsistemas ate objetos unicos, podem ser reutilizados
+	- reuso de objetos e funcoes: componentes de software que implementam umo unica funcao, como uma funcao matematica ou uma classe de objeto, podem ser reutilizados.
+	
+- beneficios | pros
+	- desenvolvimente acelerado;
+	- uso eficas de especialistas;
+	- maior dependabilidade;
+	- custos de desenvolvimento mais baixos;
+	- menos risco para o processo;
+	- conformidade com os padroes.
+	
+- problemas | cons
+	- criar, manter e usar uma biblioteca de componentes;
+	- encontrar, entender e adaptar componentes reusaveis;
+	- maiores custos de manutencao;
+	- falta de suporte da ferramenta;
+	- sindrome do "nao inventado aqui"
+	
+- planejamento do reuso 
+	- cronograma de desenvolvimento do software 
+	- tempo de vida previsto para o software 
+	- habilidades da equipe de desenvolvimento 
+	- criticidade do software 
+	- dominio de aplicacao 
+	- plataforma na qual o sistema sera executado.
