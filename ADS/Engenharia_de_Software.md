@@ -30,16 +30,16 @@
 		> feito de forma ciclica, entrega apos finalizacao
 		- comunicacao 
 		- planejamento 
-		- medelagem
-		- contrucao
+		- modelagem
+		- construcao
 		- entrega
 		
 	- modelo incremental
 		> durante a estapa de contrucao pode se escolher incrementar outro aspecto do projeto de forma paralela
 		- comunicacao
 		- planejamento
-		- medelagem
-		- contrucao 
+		- modelagem
+		- construcao 
 		- disponibilizacao
 		
 ## U1A2 metodologia agil
@@ -74,7 +74,7 @@
 			- DONE
 			
 	- XP (Extreme Programming)
-		- rapigo desenvolvimento
+		- rapido desenvolvimento
 		- requisitos se alteram constantemente
 		- valores do XP:
 			- comunicacao
@@ -94,7 +94,7 @@
 				- solucoes pontuais
 				- prototipos
 			- Codificacao
-				- programacao m pares
+				- programacao em pares
 				- teste de unidades
 				- integracao continua
 			- Testes 
@@ -113,7 +113,7 @@
 	- deescricao mais aprofundada das funcoes, servicos e limitacoes operacionais do sistema
 	- o documento de requisito tambem conhecido como especificacao funcional deve descrever de forma precisa oque deve ser feito.
 
-- Classificacao d requisitos 
+- Classificacao de requisitos 
 	- requisitos funcionais
 		- oque o sistema deve fornecer, como deve responder a entradas especificas e seu comportamento em certas cituacoes.
 		- lista funcionalidade do sistema
@@ -145,7 +145,7 @@
 			- 4. especificacao de requisitos
 			
 		- Validacao de requisitos 
-			- Confirencia de validade: verifica se os requisitos atendem as necessidades reais do cliente.
+			- Conferencia de validade: verifica se os requisitos atendem as necessidades reais do cliente.
 			- Conferencia de  Consistencia: assegura que nao existam conflitos ou inconsistencias entre os requisitos.
 			- Conferencia de completude: confirma que todos os requisitos abrangendo funcoes e restricoes, estejao incluidos no documento.
 			- Conferencia de realismo: avalia se os requisitos sao viaveis dentro do orcamento e cronograma especificado
@@ -156,7 +156,7 @@
 	- Definir o que sera gerenciado e o esquema que sera usado para identificar as entidades;
 	- estabelecer o responsavel;
 	- estabelecer politicas de gerenciamento de configuracao;
-	- especificar de ferramentas;
+	- especificacao de ferramentas;
 	- descrever a estrutura do banco de dados.
 	
 - Gerenciamento de Configuracao de Software (GCS)
@@ -165,7 +165,7 @@
 	- branch: ramificacoes de um repositorio que permitem desenvolvimento paralelo sem ameacar o projeto principal
 	
 - items de Configuracao
-	- elemento unitario ou grupo de elementos para efeito de controle deversao
+	- elemento unitario ou grupo de elementos para efeito de controle de versao
 		- documentacoes
 		- graphs
 		- etc.
@@ -190,10 +190,10 @@
 		- elaboracao de um plano de qualidade, com designacoes para verificar os requisitos acordados.
 	
 - Erros
-	- falha de software: compoertamento inesperado do sistema
-	- erro: execucao incorrentas
+	- falha de software: comportamento inesperado do sistema
+	- erro: execucao incorretas
 	- defeito: falha ou imperfeicao do codigo
-	- bug: erros e falhas inesperados, que geralmente sao de maior complexidade
+	- bug: erros e falhas inesperados, geralmente de maior complexidade
 	
 - Garantia da qualidade (GQA/SQA)
 	- possuir ferramentas e/ou metodos que permital a analises dos desenvolvimentos e dos testes;
@@ -339,10 +339,10 @@
 		- desenvolvimento;
 		- testes;
 		- seguranca e protecao dos dados;
-		- entrutura de desenvolvimento.
+		- estrutura de desenvolvimento.
 		
 - Auditor 
-	- Inspecao: efetua inpecoes dos processos dos desenvolvimento
+	- Inspecao: efetua inspecoes dos processos dos desenvolvimento
 	- Controle: efetua a analise de controle dos processos
 	- Risco: verifica de forma abrangente os riscos 
 	
@@ -595,7 +595,7 @@
 - Tipos de riscos 
 	- riscos de projeto: ameacas ao plano do projeto;
 	- riscos tecnicos: ameacas a qualidade e entrega do software;
-	- risocs de negocios: impacto na viabilidade do projeto ou produto.
+	- riscos de negocios: impacto na viabilidade do projeto ou produto.
 	
 - Principais fatores de riscos 
 	- risco de desempenho 
@@ -626,7 +626,7 @@
 - Medicao de software 
 	- processo pelo qual numeros ou simbolos sao anexados aos atributos de entidades no mundo real para defini-los de acordo com regras claramente estabelecidas.
 
-- medidas: indicacao quantitativa da extensao, quantidade, capacidade ou tamanho de algun atributo de um produto ou processo.
+- medidas: indicacao quantitativa da extensao, quantidade, capacidade ou tamanho de algum atributo de um produto ou processo.
 - metricas: medida quantitativa do grau com o qual um sistema, componente ou processo possui determinado atributo.
 - indicador: metrica ou combinacao de metricas que fornecem informacoes sobre o processo de software.
 
