@@ -22,7 +22,7 @@
 var_string = 'var value'
 var_int = 12
 var_float = 3.2
-var_bool = true 
+var_bool = True 
 ```
 
 ## Comentarios
@@ -578,4 +578,359 @@ df_selic.loc[[0, 20, 70]]
 teste = df_selic["valor"] < 0.01
 print(type(teste))
 print(teste)
+```
+
+## U3A4 - Visualizacao de dados em python 
+- Matplotlib 
+	- desempenha um papel central na criacao de graficos em python, sendo amplamente adotada em projetos de visualizacao de dados.
+	
+```python 
+import matplotlib.pyplot as plt
+import random 
+
+dados1 = random.sample(range(100), k=20)
+dados2 = random.sample(range(100), k=20)
+
+plt.plot(dados1, dados2)
+plt.bar(dados1, dados2)
+```
+
+- Pandas 
+	- as principais struturas de dados da biblioteca (Series e DataFrames) possuem o metodo plot(), construido com base no matplolib e que permite criar graficos a partir dos dados nas estruturas.
+	
+```python 
+import pandas as pd
+dados = {
+	'Produto': ['A', 'B', 'C']
+	'qtde_vendida': [33, 50, 45]
+}
+
+df = pd.DataFrame(dados)
+df.plot(x='Produto', y='qtde_vendida', kind='bar') # possiveis kind: 'bar', 'pie', 'line'
+```
+
+- Seaborn 
+	- biblioteca construida sobre a base do matplotlib para criacao de graficos especializados
+	
+```python 
+import seaborn as sns
+import matplotlib.pyplot as plt 
+
+sns.set(style='whitegrid') #opcoes: darkgrid, whitegrid, dark, white, ticks
+
+# carregando sample database da lib seaborn
+df_tips = sns.load_dataset('tips')
+pirnt(df_tips)
+
+fig, ax = plt.subplots(1, 3, figsize=(15, 5))
+
+sns.barplot(data=df_tips, x='sex', y='total_bill', ax=ax[0]) # sem estimator, padrao: media
+sns.barplot(data=df_tips, x='sex', y='total_bill', ax=ax[1], estimator=sum)
+sns.barplot(data=df_tips, x='sex', y='total_bill', ax=ax[2], estimator=len)
+```
+
+## U4A1 - Web Dev com python
+- oferece frameworks robustos como Django e flexiveis como flask, alem de suportar integracao facil com bibliotecas como react, vue.js e angular
+- dev web em python enfrenta desafios como escalabilidade e seguranca, mas oferece oportunidades para inovacao
+- fastAPI e django se destacam no desenvolvimento eficiente e rapido de APIs
+
+- Front-End com python 
+```python
+from IPython.display import HTML
+
+# criando pagina HTML com Python
+html_code = '''
+<!DOCTYPE html>
+<html>
+<head>
+	<title> exemplo front-end com python </title>
+</head>
+<body>
+	<h1> Ola, mundo </h1>
+	<p> esta e uma pagina web criado usando python </p>
+</body>
+</html>
+'''
+
+HTML(html_code)
+```
+
+- Back-End com Python
+```python 
+from flask import Flask
+
+# criando aplicativo flask
+app = Flask(__name__)
+
+# rota para pagina inicial
+@app.route('/')
+def hello():
+	return 'Bem-vindo ao back-end simples com flask'
+
+# executa a aplicacao no host e na porta especificada
+if __name__ == '__main__':
+	app.run(host='localhost', port=5000)
+```
+
+## U4A2 - Dev Mobile com Python
+- python com sintaxe clara, destaca-se com o uso de frameworks como Kivy, Beeware e Flutter que oferecem suporte a linguagem.
+- vantagems: comnunidade ativa, vasta biblioteca de modulos e agilidade proporcionada pela liguagem
+- desvantegens: desempenho comparado com linguagems nativas e possiveis limitacoes de acesso a recursos especificos do dispositivo.
+
+- KivyMD
+	- emerge como ferramenta para desenvolvimento mobile com pythonk,
+	- extencao do kivy, estendendo as capacidades do kivy ao integrar os principios de design do material design do google, proporcionando uma experiencia visualmente atraente e consistente em dispositivos moveis
+	
+```python 
+from kivy.app import App 
+from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.lavel import label
+from kivy.uix.tabbedpanel import TabbedPanel, TabbedPanelItem
+
+Builder.load_string('''
+<TabsLayout>:
+	TabbedPanel:
+		do_default_tab: False
+		TabbedPanelItem:
+			text: 'Tab 1'
+			BoxLayout:
+				orientation: 'vertical'
+				Label:
+					text: 'Content for Tab 1'
+		TabbedPanelItem:
+			text: 'Tab 2'
+			BoxLayout:
+				orientation: 'vertical'
+				Label:
+					text: 'Content for Tab 2'
+''')
+
+class TabsLayout(BoxLayout):
+	pass 
+	
+class TabsApp(App):
+	def build(self):
+		return TabsLayout()
+		
+# funcao de initializacao
+def run_kivy_app():
+	app = TabsApp()
+	app.run()
+	
+# chamada da funcao de inicializacao
+run_kivy_app()
+
+```
+
+## U4A3 - Testes automatizados com Python
+- Assertions
+	- sao utilizadas para verificar condicoes essenciais durante a execucao do codigo.
+
+```python 
+def divite(x, y):
+	assert y != 0, "divisao por zero!"
+	return x / y
+
+result = divide(0, 2)
+print(result)
+
+def calcular_media(notas):
+	assert len(notas) > 0, "a lista de notas nao pode estar vazia"
+	
+	soma = sum(notas)
+	media = soma / len(notas)
+	return media 
+	
+# 1. lista d enotas vazia 
+notas_vazias = []
+media = calcular_media(notas_vazias) # isso lancara uma AssertionError
+
+# 2. lista de notas validas
+notas_validas = [8, 7, 2, 1, 9]
+media = calcular_media(notas_validas) # isso funcionara corretamente
+
+print(media) 
+```
+
+- Dectest
+	- modulo em python que permite incorporar testes diretamente na documentacao do codigo, aproveitando os exemplos presentes na documentacao para verificar se o codigo funciona comforme o esperado.
+
+```python 
+import doctest
+
+def square(x):
+	'''
+	retorna o quadrado de um numero.
+	
+	Exemplos:
+	>>> square(3)
+	9
+	>>> square(-2)
+	4
+	>>> square(0)
+	0
+	'''
+	return x * x
+	
+doctest.testmod()
+```
+
+- Unittest
+	- oferece uma estrutura de teste mais avancada, permitindo a organizacao de testes em classes e metodos, alem de fornecer assertions mais poderosas.
+	
+```python
+import unittest 
+
+def add(a, b):
+	return a + b 
+
+class TestAddition(unittest.TestCase):
+	def test_add_positive_number(self):
+		self.assertEqual(add(2, 3), 5)
+	
+	def test_add_negative_number(self):
+		self.assertEqual(add(-2, -3), -5)
+		
+if __name__ == '__main__':
+	import unittest 
+	unittest.main(argv=['first-arg-is-ignored'], exit=False)
+	print('os testes foram executados com sucesso')
+```
+
+## U4A4 - Machine Learning com python 
+- Teoria Machine Learning 
+	- area da IA que visa desenvolver algoritmos capazes de aprender com dados e realizar tarefas sem programacao explicita
+	- envolve abordagem como aprendizado supervisionado, nao supervisionado e por reforco
+	- modelos:
+		- arvores de decisao: modelo de tomada de decisao baseado em condicoes,
+		- Redes Neurais: inspirada no funcionamento do cerebro, sao usadas para problemas complexos,
+		- SVM: Support Vector Machines, para classificacao e regressao,
+		- K-Means: algoritmo de agrupamento usado no aprendizado nao supervisionado
+
+- Tipos de Treinamento
+	- os tipos de treinamento sao estrategias fundamentais no desenvolvimento de modelos de Machine Learning
+	- Supervisionado: o modelo e alimentado com um conjunto de dados rotulados, consistindo em pares de entrada e saida esperada. e.g classificacao de e-mails como 'spam' ou 'nao spam'
+	- Nao Supervisionado: lida com dados nao-rotulados. e.g agrupamento de clientes com base em padroes de compra
+	- Por reforco: envolve um agente interagindo com um ambiente dinamico. e.g treinar um agente de IA para jogar um jogo e ganhar pontos ao realizar acoes corretas.
+
+- Tensorflow
+	- biblioteca opensource que facilita a implementacao de modelos de machine learning e deep learning. sua estrutura flexivel permite a criacao e treinamento de modelos complexos, sendo amplamente utilizada na comunidade de aprendizado de maquina.
+
+```python 
+# ==== SUPERVISIONADO ====
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+ 
+
+# Dados de exemplo
+X_train = tf.constant([[1.0], [2.0], [3.0], [4.0]])
+y_train = tf.constant([[2.0], [4.0], [6.0], [8.0]])
+
+ 
+
+# Modelo de Regressão Linear Simples
+model = Sequential()
+model.add(Dense(units=1, input_shape=(1,)))
+model.compile(optimizer='sgd', loss='mean_squared_error')
+
+ 
+
+# Treinamento do modelo
+model.fit(X_train, y_train, epochs=1000, verbose=0)
+
+ 
+
+# Previsão
+X_new = tf.constant([[5.0]])
+prediction = model.predict(X_new)
+print(“Predição:”, prediction[0][0])
+
+plt.ylabel('Notas')
+plt.show()
+
+# ===== NAO SUPERVISIONADO ======
+import tensorflow as tf
+from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.models import Model
+
+# Dados de exemplo
+X_unsupervised = tf.constant([[1.0, 2.0], [2.0, 3.0], [3.0, 4.0], [4.0, 5.0]])
+
+ 
+
+# Modelo Autoencoder Simples
+input_layer = Input(shape=(2,))
+encoded = Dense(units=1)(input_layer)
+decoded = Dense(units=2)(encoded)
+
+autoencoder = Model(inputs=input_layer, outputs=decoded)
+autoencoder.compile(optimizer='adam', loss='mean_squared_error')
+
+ 
+
+# Treinamento do modelo não supervisionado
+autoencoder.fit(X_unsupervised, X_unsupervised, epochs=1000, verbose=0)
+
+ 
+
+# Previsão
+prediction_unsupervised = autoencoder.predict(X_unsupervised)
+print(“Predição Não Supervisionada:”, prediction_unsupervised)
+
+# ===== POR REFORCO =======
+import tensorflow as tf
+import gym
+
+# Ambiente CartPole do Gym
+env = gym.make('CartPole-v1')
+
+# Modelo Simples para Aprendizado por Reforço
+model_reinforcement = tf.keras.Sequential([
+    tf.keras.layers.Dense(24, activation='relu', input_shape=(env.observation_space.shape[0],)),
+    tf.keras.layers.Dense(env.action_space.n, activation='linear')
+])
+
+model_reinforcement.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), loss='mse')
+
+# Treinamento por Reforço (exemplo fictício)
+max_episodes = 1000  # Defina o número máximo de episódios
+
+for episode in range(max_episodes):
+    state = env.reset()
+
+    done = False
+
+    while not done:
+
+        action = env.action_space.sample()
+
+        next_state, reward, done, _ = env.step(action)
+
+        target = reward + 0.95 * tf.reduce_max(model_reinforcement.predict(next_state.reshape(1, -1)))
+
+        target_f = model_reinforcement.predict(state.reshape(1, -1))
+
+        target_f[0][action] = target
+
+        model_reinforcement.fit(state.reshape(1, -1), target_f, epochs=1, verbose=0)
+
+        state = next_state
+
+    # Condição de parada
+
+    if episode % 10 == 0:
+        average_reward = sum(reward for _ in range(10)) / 10.0
+
+        print(f'Episode {episode}, Average Reward: {average_reward}')
+
+        # Adicionando uma condição de parada
+        if average_reward == 1:  # Pode ajustar esse valor conforme necessário
+
+            print(f'Solved after {episode} episodes!')
+
+            break
+
 ```

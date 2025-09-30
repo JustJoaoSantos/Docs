@@ -22,4 +22,4 @@ df['preco do item'] = df['receita total'] / df['quantidade de itens comprados']
 items_acima_de_50 = df[df['preco do item'] > 50]
 
 print("items acima de 50 reails")
-print(items_acima_de_50)
+print(items_acima_de_50) 

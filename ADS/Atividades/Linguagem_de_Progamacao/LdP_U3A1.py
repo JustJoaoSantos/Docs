@@ -3,14 +3,14 @@ import sqlite3
 # CREATE
 conn = sqlite3.connect("contatos.db")
 cursor = conn.cursor()
-cursor.execute(```
+cursor.execute('''
 	CREATE TABLE IF NOT EXISTS Contatos(
 		id INTERGER PRIMARY KEY AUTOINCREMENT,
 		nome TEXT,
 		email TEXT,
 		telefone TEXT
 	)
-```)
+''')
 
 dados_exemplo = [
 	("Joao", "Joao@email.com", "123-455-3311"),
