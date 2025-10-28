@@ -465,8 +465,9 @@
 	1. parenteses
 	2. negacao (~)
 	3. conjunsao e disjunsao (V/^)
-	4. condicional (->)
+	4. implicacao (->)
 	5. bicondicional (<->)
+	
 - exemplo:
 	- Valoracao da formula ~(A v B)
 		- SE A = V, B = V ENTAO
@@ -554,6 +555,7 @@
 - representacao tabular que mostra todas as combinacoes possiveis de valores de verdade para proposicoes logicas, indicando os resultados das operacoes logica correspondente
 - comum usar 0 para falso e 1 para verdadeiro 
 - exemplo: tabela verdade com 2 entradas (A e B), e uma expressao logica AND(^)
+- n de linhas: 2^ ao num de elemenro, e.g 3 elementos (a, b, c) : 2^3 = 8 linhas
 | A | B | A^B 
 | 0 | 0 | 0
 | 0 | 1 | 0
@@ -598,3 +600,48 @@ exemplo: suponha a seguinte expressao logica que envolve proposicoes intermediar
 - Em seguida as operacoes logicas das quais queremos obter resultados
 - nas Linhas colocaremos os valores logicos ( V ou F) tanto para as proposicoes quanto para os resultados das formulas 
 - Usamos 0 e 1 para falso ou verdade.
+
+# U4A3 - Resultados da tabela verdade 
+## Conectivo condicional (implicacao)
+- sera falso somente se a antecedente for verdadeiro e a consequente falso 
+- representado por '->'
+| P | Q | P -> Q (se P entao Q)
+| V | V | 	V 
+| V | F | 	F 
+| F | V | 	V 
+| F | F | 	V
+
+## Conectivo Bicondicional 
+- a proposicao resultante so sera falsa se as proposicoes individuais possuirem valoracao diferente 
+- representado por '<->'
+| P | Q | P <-> Q (P se e somente se Q)
+| V | V | 	V 
+| V | F | 	F 
+| F | V | 	F 
+| F | F | 	F 
+
+## Tautologia
+- tabela verdade para a lei de morgan ~(A v B) <-> ~A ^ ~B (~(A v B) equivale a ~A ^ ~B)
+| A | B | ~(A v B)  | ~A ^ ~B | <-> |
+| V | V | 	  F 	| 	F 	  |  V  |
+| V | F | 	  F 	| 	F 	  |  V  |
+| F | V | 	  F 	| 	F 	  |  V  |
+| F | F | 	  V 	| 	V 	  |  V  |
+
+# U4A4 - Aplicacoes da tabela verdade 
+## Tabela verdade com preposicoes intermediarias
+- dada uma formula com varias preposicoes, conectores e parenteses dentro de parenteses 
+- ordem de resolusao de ((A v B) -> C) ^ A:
+	1. A v B : parenteses mais internos
+	2. ((A v B) -> C) : parenteses mais externos
+	3. ((A v B) -> C) ^ A) : operacao fora de parentes
+|	|	|	|   P 	|    Q   |	R 	 |
+| A | B | C | A v B | P -> C | Q ^ A |
+| V | V | V | 	V   | 	V 	 | 	 V 	 |
+| V | V | F | 	V   | 	F 	 | 	 F 	 |
+| V | F | V | 	V   | 	V 	 | 	 V 	 |
+| V | F | F | 	V   | 	F 	 | 	 F 	 |
+| F | V | V | 	V   | 	V 	 | 	 F 	 |
+| F | V | F | 	V   | 	F 	 | 	 F 	 |
+| F | F | V | 	F   | 	V 	 | 	 F 	 |
+| F | F | F | 	F   | 	V 	 |	 F 	 |
