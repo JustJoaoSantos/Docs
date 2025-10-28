@@ -163,31 +163,32 @@
 
 # U2A1 - Fundamentos de processos de negocios 
 - Classificacao de processos de negocios 
-	- macroprocesso 
+	- Macroprocesso 
+		- oque a empresa faz em sua finalidade
 		- fabricar automovel
 		- desenvolvimento de software
-	- processo 
+	- Processo 
 		- desenvolvimento produto, producao
 		- desenvolvimento de web, de aplicativo
-	-	sub processo 
+	- Sub processo 
 		- design, seguranca, pintura, montagem
 		- ux, ui, design, web design 
 		
-- tipos de processos de negocios 
-	- processos primarios;
-	- processo de suporte;
+- Tipos de processos de negocios 
+	- Processos primarios;
+	- Processo de suporte;
 		- processos que auxiliao os primarios, e.g RH
-	- processo de gerenciamento.
+	- Processo de gerenciamento.
 
 - Beneficios do processo de negocios 
-	- alinhamento dos processos com a estrategia organizacional;
-	- melhoria da qualidade dos processos e dos produtos;
-	- reducao de custos por se desenvolver um olhar mais critico;
-	- muitos processos tem reducao de sua complexidade e tornam-se mais simples, facilitando a interacao entre as areas.
-	- processos nao essenciais podem ser automatizados;
-	- aumento do envolvimento e comprimetimento dos stakeholders
-	- mehor delegacao de responsabilidades;
-	- visao funcional e visao de processos.
+	- Alinhamento dos processos com a estrategia organizacional;
+	- Melhoria da qualidade dos processos e dos produtos;
+	- Reducao de custos por se desenvolver um olhar mais critico;
+	- Muitos processos tem reducao de sua complexidade e tornam-se mais simples, facilitando a interacao entre as areas.
+	- Processos nao essenciais podem ser automatizados;
+	- Aumento do envolvimento e comprimetimento dos stakeholders
+	- Mehor delegacao de responsabilidades;
+	- Visao funcional e visao de processos.
 	
 - visao funcional
 	- niveis hierarquicos:
@@ -196,7 +197,7 @@
 		- presidencia -> diretoria 1 -> gerencia 1
 		
 # U2A2 - Gerenciamento de processo de negocios
-- Visao fisica dos processos 
+- Visao fisica de funcoes 
 	- Funcoes e Atividades 
 	- e.g 
 		- vendas -> obter pedido
@@ -236,11 +237,11 @@
 	- portanto objetivos organizacionais podem ser atingidos por meio de um gerenciamento centrado em processos de negocios.
 	
 - CMMI 
-	- N1 - Inicial : Sucesso depende de herois
-	- N2 - Gerenciado : capacidade de gestao de projetos 
-	- N3 - Definido : processo comum adaptado as necessidaders dos projetos 
-	- N4 - Gerenciado quantitativamente: capacidade de planejar estatisticamente a qualidade 
-	- N5 - Em otimizacao: capacidade de prevenir defeitos e inovar
+	- N1 - Inicial : Nao possui nada definido.
+	- N2 - Gerenciado : Capacidade de gestao de projetos 
+	- N3 - Definido : Processo comum adaptado as necessidaders dos projetos 
+	- N4 - Gerenciado quantitativamente: Capacidade de planejar estatisticamente a qualidade 
+	- N5 - Em otimizacao: Capacidade de prevenir defeitos e inovar
 
 - Mudanca Cultural / organizacional
 	- Mudar o comportamento dos membros da organizacao;
@@ -249,5 +250,97 @@
 	- Contratar e socializar novos integrantes;
 	- Remover integrantes que nao se adaptam.
 	
-BPMS: Em outras palavras, contribui para a automatização das ações e do fluxo de informações dentro dos processos
-SOA: Arquitetura orienta a servicos 
+- BPMS: Em outras palavras, contribui para a automatização das ações e do fluxo de informações dentro dos processos
+- SOA: Arquitetura orienta a servicos 
+
+# U2A3 - Modelagem de processos de negocios 
+- Funcoes dos modelos 
+	- Organizacao (estruturacao)
+	- Descorberta (aprendizagem)
+	- Previsao (estimativas)
+	- Medicao (quantificacao)
+	- Explicacao (ensino, demonstracao)
+	- Verificacao (validacao)
+	- Controle (estabelecimento de restricoes e objetivos)
+
+- Conteudo dos modelos 
+	- Atividades;
+	- Fluxo de trabalho;
+	- Recursos;
+	- Decisoes;
+	- Eventos;
+	- Tempo;
+	- Responsabilidades;
+	- Objetivos 
+	
+- Diagrama: 
+	- Um diagrama apresenta os elementos principais de um fluxo de processo, 
+	- simplificando detalhes menores para facilitar a compreensão dos fluxos de trabalho
+- Mapa: 
+	- Um mapa oferece uma visão abrangente dos principais componentes do processo, 
+	- acrescentando mais precisão do que um diagrama.
+- Modelos:
+	- Um modelo implica a representação de um estado específico do negócio (atual ou futuro) e dos recursos correspondentes, 
+	- como pessoas, informações, instalações, automação, finanças e insumos.
+
+- Arquitetura de negocios
+	- Modela os processo de negocios em um nivel conceitual
+	- Enfoca as capacidade de negocio, ou seja "O Que" a empresa faz 
+	- Concentra-se na criacao de modelos de negoci para a eficacia operacional
+	
+- Arquitetura de processos 
+	- Define "Como" os produtos, servicos ou entregaveis sao construidos e entregues.
+	- Detalha as atividades necessarias para alcancar as capacidades de negocios.
+	- Preocupa-se com a eficiencia na gestao e execucao das atividades fisicas.
+	
+- Notacoes de modelagem de negocios 
+	- BPMN (Business Process Model and Notation) 
+	- Fluxograma:  representação visual que utiliza símbolos gráficos para descrever a sequência de atividades em um processo.
+	- EPC (Event-Driven Process Chain)
+	- UML (Unifed Modeling Language)
+	
+- Importancia da modelagem
+	- Melhorar processos;
+	- Eliminar ou automatizar processos;
+	- Documentar processos
+	
+# U2A4 - Business Process Model and Notation (BPMN)
+- Elementos da BPMN - Basicos 
+	- Atividade 
+	- Evento 
+	- Gateway 
+	- Conector 
+	
+- Elementos da BPMN - Subprocessos 
+	- Sub processo colapsado simples 
+	- Sub processo transacional 
+	- Subprocesso com marcador de loop
+	- subprocesso com marcador de multiplas instancias
+	- etc...
+	
+- elementos da BPMN - eventos 
+	- Nada (simples)
+	- Link (conector)
+	- Multiplo 
+	- Mensagem 
+	- Regra 
+	- Marca tempo 
+	- etc...
+	
+- Elementos da BPMN - Gateways 
+	- exclusivo (XOR) baseado em dados
+	- Exclusivo (XOR) baseado em evento 
+	- Inclusivo (OR) para multipla escolha
+	
+- Elementos da BPMN - Conectores 
+	- Direcao de sequencia de fluxo 
+	- Direcao do fluxo de mensagem 
+	- Associacao de elemetos
+	
+- Elementos da BPMN - Outros
+	- Piscina (Pool)
+	- Raias 
+	- Objeto de dados 
+	- Grupo
+	- Anotacao
+	
