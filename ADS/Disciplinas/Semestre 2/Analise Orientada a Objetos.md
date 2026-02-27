@@ -365,6 +365,9 @@
 	- Restringe o foco a um unico aspecto por vez;
 	- Quanto mais complexo o sistema, maior a importancia da modelagem.
 	
+- Processo Unificado 
+	- segue anexo: U4A1_PU.png 
+	
 - Fase de Concepcao 
 	- O planejamento do projeto;
 	- A definicao da ideia inicial do negocio;
@@ -395,16 +398,109 @@
 	
 ## U4A2 - Modelagem Complementar
 - Diagrama de Estrutura Composta
+	- segue anexo: Anexo/U4A2_diagrama_estruc_composta.png
 	- Identificar a arquitetura do conjunto de elementos que interagem entre si durante a execucao do sistema;
 	- Estrutura interna de um componente;
 	- Mostra a interligacao entre as instancias e o tempo de execucao 
-	- segue anexo: Anexo/U4A2_diagrama_estruc_composta.png
+	
 	
 - Diagrama de maquina de estados 
 	- segue anexo: Anexo/U4A2_diagrama_maq_estados.png 
+	- revela o comportamento dos objetos por meio de estados e transições, elaborado para classes como “Reserva”, “Pessoa”, “Carro” e “AluguelDevolução”.
 	
 - Diagrama de atividades 
 	- segue anexo: Anexo/U4A2_diagrama_Atividade.png 
+	- descreve o fluxo de controle das atividades, essencial para representar processos de negócios completos ou funcionalidades específicas, aplicado, por exemplo, aos casos de uso "Reservar Carro" e "Acessar Conta Cliente".
 
 - Diagrama de Sequencia 
 	- seque anexo: Anexo/U4A2_diagrama_sequencia.png 
+	- ordena as interações temporais entre objetos em um processo ou caso de uso, sendo utilizado para os casos de uso “Alugar Carro” e “Devolver Carro”.
+	
+## U4A3 - Transiçao de analise para projeto 
+- Refinamento do Diagrama de Classes 
+	1. Refinamento de classes: definir as classes de projeto ou criar novas classes. Uma classe de análise pode resultar em várias classes de projeto.
+	2. Definição de estereótipos: classificar as classes em estereótipos de fronteira (<<boundary>>), controle (<<control>>) ou entidade (<<entity>>).
+	3. Tipo de dados: estabelecer o tipo de dados de cada atributo de acordo com a linguagem de programação que será utilizada na implementação.
+	4. Detalhamento de operações: listar todas as operações identificadas nos diagramas comportamentais e de interação.
+	5. Revisão de visibilidade: definir a visibilidade das classes e operações, estabelecendo o nível de acessibilidade de atributos ou operações por outros objetos, que pode ser privada, pública, protegida ou de pacote.
+	6. Revisão de relacionamentos: revisar os tipos de relacionamentos entre as classes, como associação (incluindo associação reflexiva, binária, ternária, classe associativa e agregação), generalização, dependência ou realização, além de indicar a navegabilidade de cada associação.
+	7. Definição de classes abstratas e interfaces: especificar classes abstratas, interfaces, padrões de projeto (design patterns), componentes de software reutilizáveis, frameworks e demais detalhes pertinentes às tecnologias de desenvolvimento a serem utilizadas durante a implementação, definindo assim a arquitetura de um sistema orientado a objetos.
+		
+- Diagrama de implantaçao
+	- segue anexo: Anexo/U4A3_diagrama_implantacao.png 
+	
+- Evolucao da Documentacao de analise para o projeto 
+	- Refinamento dos aspectos estaticos e estruturais da modelagem do sistema.
+	- Detalhamento dos aspectos dinamicos da modelagem do sistema;
+	- Detalhamento da arquitetura do sistema, com base na decomposicao logica e fisica do sistema;
+	- Definicao dos mecanismos de armazenamentos dos dados manipulados pelo sistema;
+	- Definicao dos algoritmos a serem utilizados na implementacao dos sistema;
+	- Elaboracao do projeto da interface grafica das funcionalidades do sistema.
+	
+## U4A4 - Aspectos de qualidade no desenvolvimento 
+- Construir o esquema BDR
+	1. Identificacao de objetos: Determine se os objetos das classes sao transientes (existem apenas durante uma sessao) ou sao persistentes (armazenados fisicamente);
+	2. Mapeamento de atributos: Mapear os valores dos atributos das classes persistentes para as colunas das tabelas no banco de dados relacional;
+	3. Analise de relacionamentos: Analise os relacionamentos entre as classes persistentes e aplique as regras de mapeamento para refletir esses relacionamentos nas tabelas do banco de dados.
+	4. Uso de ferramentas CASE: utilize ferramentas CASE para automatizar a geracao do esquema relacional, mas revise manualmente o mapeamento para garantir a precisao.
+
+- Esquema:
+	- Nome da Tabela (coluna 1, coluna 2, coluna n)
+		- Cada coluna representa um atributo da classe mapeada, no entanto, atencao aos atributos derivados, pois eles nao sao mapeados para uma coluna;
+		- Destaca-se a coluna que representa a chave primaria com sublinhados simples e as colunas que representam chaves estrageiras com sublinhado tracejado.
+		- Representa-se em cada tabela derivada de classe, no geral, uma coluna que indica o identificador(ID) para a chave primaria. essa estrategia de notacao dos "IDs" define a identidade independente dos objetos, conforme os principios da orientacao a objetos.
+
+- Uma sugestão para elaborar o mapeamento é iniciar o mapeamento das tabelas que não têm chave estrangeira, posteriormente as demais tabelas e, ao finalizar o mapeamento, classificar as tabelas e listá-las em ordem alfabética.
+
+- Mapeamento de associacao binaria
+	- segue anexo: Anexo/U4A4_mapeamento.png 
+	- Desc
+	```
+	Marca (marcaID, nome).
+	GrupoCarro (grupoCarroID, nome, descricao, valorDiaria, precoKM, marcaID)
+	Carro (carroID, anoFabricacao, placa, anoModelo, renavam, chassi, km, imagem, observacao, situacao, combustivel, grupoCarroID).
+	```
+	
+- Mapeamento de associacao binaria 1,1
+	- segue anexo: Anexo/U4A4_mapeamento_1_1.png
+	- Desc 
+	```
+	Reserva (reservaID, dataReserva, dataRetirada, horaRetirada, dataPrevDevolucao, situacao, observacao, demaisFK).
+	AluguelDevolucao (aluguelDevolucaoID, dataAluguel, dataPrevDevolucao, valorKm, valorDiaria, numeroContrato, dataDevolucao, kmRodada, observacao, formaPagto, reservaID, demaisFK).
+	```
+	
+- Mapeamento de classe associativa 
+	- segue anexo: Anexo/U4A4_mapeamento_associativa.png
+	- Desc 
+	```
+	Carro (carroID, anoFabricacao, placa, anoModelo, renavam, chassi, km, imagem, observacao, situacao, combustivel, grupoCarroID).
+	Opcionais (OpcionaisID, nome, descricao).
+	CarroOpcionais (carroID, OpcionaisID, original)
+	```
+	
+- Mapeamento com agregacao 
+	- segue anexo: Anexo/U4A4_mapeamento_agregacao.png
+	- Desc 
+	```
+	Pais (paisID, nome, codigo, continente, idioma).
+	Estado (estadoID, nome, sigla, paisID).
+	Municipio (municipioID, nome, regiao, estadoID).
+	FilialLoja (filialLojaID, nome, cnpj, logradouro, complemento, bairro, cep, telefone, celular, contatoResponsavel, municipioID).
+	```
+	
+- Mapeamento de Composicao 
+	- segue anexo: U4A4_mapeamento_composicao.png
+	- Desc 
+	```
+	CreditoParcelado (creditoParceladoID, dataLancamento, qtdadeParcelas, valorTotal, situacao, demaisFK).
+	ParcelaCreditoParcelado (creditoParceladoID, parcelaCreditoParceladoID, dataVencimento, valorParcela, dataPagamento, juro, multa, outrosAcrescimos, desconto).
+	```
+	
+- Mapeamento de generalizacao 
+	- segue anexo: Anexo/U4A4_generalizacao.png
+	- Desc 
+	```
+	Pessoa (pessoaID, nome, logradouro, numeroLogradouro, bairro, cidade, estado, cep, telefone, celular, situacao, enderecoEletronicoLogin, senhaAlfanumerica, tipoPessoa[PF/PJ], demaisFK).
+	PessoaFisica (pessoaID, cpf, dataNascimento, sexo, telefoneComercial, pessoaIDJ, demaisFK).
+	PessoaJuridica (pessoaID, cnpj, inscricaoEstadual, razaoSocial, dataAberturaEmpresa, contato, desconto, demaisFK).
+	```
